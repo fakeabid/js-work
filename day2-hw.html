@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>day 2 hw</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+        <style>
+            body {
+                font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                letter-spacing: 0.3px;
+            }
+            header, main, footer {
+                padding: 30px;
+            }
+            #p-tag {
+                font-size: smaller;
+            }
+        </style>
+    </head>
+<!-- You are building a simple contact manager app. Each contact has a name, phone number, and email address. You want to group contacts as objects and add a method that shows the contact's full information in a neat format.
+Your tasks are:
+Create an object called contact1 with the following properties: name, phone, and email.
+Add a method getInfo inside the object that returns a single string combining all the contact details.
+Create a function printContactInfo(contact) that takes a contact object as a parameter and prints its getInfo() result.
+Create another contact called contact2 using the same structure.
+Call the printContactInfo() function for both contacts. -->
+    <body>
+        <header class="bg-primary text-white">
+            <h5>contact manager app <span class="text-light small">v1.0</span></h5>
+        </header>
+        <main>
+            <h3>Contact List</h3>
+            <hr>
+            <table class="table">
+                <tr class="thead-light">
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                </tr>
+                <tr>
+                    <td>Raju</td>
+                    <td>1234567890</td>
+                    <td>raju@gmail.com</td>
+                </tr>
+                <tr>
+                    <td>Bheem</td>
+                    <td>1234567890</td>
+                    <td>bheem@gmail.com</td>
+                </tr>
+                <tr>
+                    <td>Chutki</td>
+                    <td>1234567890</td>
+                    <td>chutki@gmail.com</td>
+                </tr>
+            </table>
+            <br>
+            <h4>Output</h4>
+            <div class="card">
+                <div class="card-body">
+                    <span class="d-block" id="p-tag"></span>
+                </div>
+            </div>
+        </main>
+        <footer></footer>
+        <script>
+            contact1 = {
+                name: "Raju",
+                phone: "1234567890",
+                email: "raju@gmail.com",
+                getInfo: function() {
+                    console.log("Contact Details: \nName: "+this.name+"\nPhone: "+this.phone+"\nEmail: "+this.email+"\n");
+                    return "<b>Contact Details:</b> <br>Name: "+this.name+"<br>Phone: "+this.phone+"<br>Email: "+this.email+"<br>";
+                }
+            };
+
+            function printContactInfo(contact) {
+                document.getElementById("p-tag").innerHTML += contact.getInfo();
+            };
+
+            contact2 = {
+                name: "Bheem",
+                phone: "1234567890",
+                email: "bheem@gmail.com",
+                getInfo: function() {
+                    console.log("Contact Details: \nName: "+this.name+"\nPhone: "+this.phone+"\nEmail: "+this.email+"\n");
+                    return "<b>Contact Details:</b> <br>Name: "+this.name+"<br>Phone: "+this.phone+"<br>Email: "+this.email;
+                }
+            };
+
+            printContactInfo(contact1);
+            printContactInfo(contact2);
+        </script>
+    </body>
+</html>
