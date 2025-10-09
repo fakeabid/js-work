@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>day 3 hw</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+        <style>
+            body {
+                font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                letter-spacing: 0.4px;
+            }
+            header, main, footer {
+                padding: 25px 50px;
+            }
+            main {
+                min-height: 100vh;
+            }
+            .card-img-top {
+                height: 200px;
+                max-width: 220px;
+                object-fit: cover;
+            }
+            .card-text {
+                font-size: smaller;
+            }
+            footer {
+                font-size: small;
+            }
+        </style>
+    </head>
+    <body>
+        <header class="bg-warning text-muted d-flex" style="justify-content: space-between;">
+            <h6 class="d-inline">somewebsite.in</h6>
+            <span class="small"><i class="bi bi-person-circle"></i> Admin</span>
+        </header>
+        <main class="container mt-3">
+            <h2>Welcome to somewebsite!</h2>
+            <span class="small">- where user bios get modified without consent!</span>
+            <hr>
+            <br>
+            <h3>Output Screen</h3>
+            <hr>
+            <div class="card">
+                <div class="card-body" id="output">
+                </div>
+            </div>
+        </main>
+        <footer></footer>
+        <script>
+            let userProfile = {
+                username: " iceCREAMman89  ",
+                bio: " Mwuahahaha! Bye javascript Bye Javascript "
+            };
+
+            document.getElementById("output").innerHTML = `${userProfile.username}<br>${userProfile.bio}<br>${userProfile.bio.length} characters in bio.<br><br>`;
+
+            function cleanUserBio(profile) {
+                console.log(profile.username);
+                console.log(profile.bio);
+                var bioCharCount = profile.bio.length;
+                console.log("Bio has "+bioCharCount+" characters.");
+                profile.username = profile.username.trim().toLowerCase().replace(/javascript/gi, "JS");
+                profile.bio = profile.bio.trim().toLowerCase().replace(/javascript/gi, "JS");
+                console.log(profile.username);
+                console.log(profile.bio);
+                bioCharCount = profile.bio.length;
+                console.log("New bio has "+bioCharCount+" characters.");
+                newProfile = {
+                    username: profile.username,
+                    bio: profile.bio,
+                    bioLength: bioCharCount
+                };
+                console.log(newProfile);
+                return newProfile;
+            }
+
+            let cleanedUserProfile = cleanUserBio(userProfile);
+
+            document.getElementById("output").innerHTML += `${cleanedUserProfile.username}<br>${cleanedUserProfile.bio}<br>${cleanedUserProfile.bioLength} characters in bio.`;
+        </script>
+    </body>
+</html>
