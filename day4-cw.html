@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>day 4 cw</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+        <style>
+            body {
+                font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                letter-spacing: 0.4px;
+            }
+            header, main, footer {
+                padding: 30px 50px;
+            }
+            main {
+                min-height: 83vh;
+            }
+            .card {
+                max-width: 400px;
+                border-radius: 15px !important;
+            }
+            .card-text {
+                font-size: smaller;
+            }
+            footer {
+                font-size: small;
+            }
+        </style>
+    </head>
+    <body>
+        <header class="bg-dark text-white">
+            <h6>statistics website</h6>
+        </header>
+        <main class="bg-light pt-5">
+            <div class="container">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Statistics</h4>
+                        <hr>
+                        <div class="card-text">
+                            <h6>Random Whole Number:</h6>
+                            <span id="random-whole-no"></span>
+                            <br>
+                            <br>
+                            <h6>User Score:</h6>
+                            <span id="user-score"></span>
+                            <br>
+                            <br>
+                            <h6>Difference:</h6>
+                            <span id="difference"></span>
+                            <br>
+                            <br>
+                            <h6>Rounded Square Root of User Score:</h6>
+                            <span id="rounded-sqrt"></span>
+                            <br>
+                            <br>
+                            <h6>π:</h6>
+                            <span id="pi"></span>
+                            <br>
+                            <br>
+                            <h6><q>50</q> converted to Number and multipled by 2:</h6>
+                            <span id="result"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer class="bg-dark"></footer>
+        <script>
+            function generateRndWholeNo(min, max) {
+                return Math.floor(Math.random() * (max - min)) + 1;
+            }
+            var rndWholeNo = generateRndWholeNo(1, 100);
+            console.log(rndWholeNo);
+            document.getElementById("random-whole-no").innerHTML = rndWholeNo;
+
+            var userScore = "" + generateRndWholeNo(1, 100);
+            console.log(typeof(userScore));
+            console.log("Changing datatype of userScore.");
+            userScore = userScore - 0;
+            console.log(typeof(userScore));
+            document.getElementById("user-score").innerHTML = `${userScore} (Type: ${typeof(userScore)})`;
+
+            var difference = rndWholeNo - userScore;
+            console.log("Difference: "+difference);
+            difference = Math.abs(difference);
+            console.log("Difference (Absolute): "+difference);
+            document.getElementById("difference").innerHTML = difference+" (Absolute)";
+
+            var roundSqtUserScore = Math.round(Math.sqrt(userScore));
+            console.log("Rounded Sqaure Root of User Score: "+roundSqtUserScore);
+            document.getElementById("rounded-sqrt").innerHTML = roundSqtUserScore;
+
+            console.log("Pi constant: "+Math.PI);
+            document.getElementById("pi").innerHTML = Math.PI;
+
+            var result = ("50" - 0)*2;
+            console.log("Result of multiplication: "+result);
+            document.getElementById("result").innerHTML = result;
+        </script>
+    </body>
+</html>

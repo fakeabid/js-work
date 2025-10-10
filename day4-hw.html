@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>day 4 hw</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+        <style>
+            body {
+                font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                letter-spacing: 0.4px;
+            }
+            header, main, footer {
+                padding: 30px 50px;
+            }
+            main {
+                border-radius: 15px !important;
+            }
+            .btn {
+                border-radius: 12px !important;
+            }
+            .card {
+                max-width: 500px;
+                border-radius: 15px !important;
+                text-align: center;
+            }
+            #inner-box {
+                border: none;
+            }
+            .card-body {
+                font-size: smaller;
+            }
+            footer {
+                font-size: small;
+            }
+        </style>
+    </head>
+    <body>
+        <header></header>
+        <main class="container bg-light">
+            <div class="card mx-auto">
+                <div class="card-body">
+                    <h3 class="card-title">Final Score</h3>
+                    <button type="button" class="btn btn-primary btn-sm mx-auto d-block mt-3 mb-3" onclick="calculateScore()">Show Score</button>
+                    <div class="card bg-light" id="inner-box">
+                        <div class="card-body">
+                            <h6 class="card-title">Mystery Level:</h6>
+                            <span id="mystery-level">-</span>
+                            <br>
+                            <br>
+                            <h6 class="card-title">User Score:</h6>
+                            <span id="user-score">-</span>
+                            <br>
+                            <br>
+                            <h6 class="card-title">Absolute Difference:</h6>
+                            <span id="difference">-</span>
+                            <br>
+                            <br>
+                            <h6 class="card-title">Square Root of User Score:</h6>
+                            <span id="sqrt-user-score">-</span>
+                            <br>
+                            <br>
+                            <h6 class="card-title">Value of π:</h6>
+                            <span id="pi">-</span>
+                            <br>
+                            <br>
+                            <h6><q>20</q> converted to Number and multipled by 5:</h6>
+                            <span id="result">-</span>
+                            <br>
+                            <br>
+                            <h6>Highest among (10, 20, mystery-level):</h6>
+                            <span id="max">-</span>
+                            <br>
+                            <br>
+                            <h6>Lowest among (10, 20, mystery-level):</h6>
+                            <span id="min">-</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer></footer>
+        <script>
+
+            function calculateScore() {
+                var mysteryLevel = Math.floor(Math.random() * (50 - 1 + 1)) + 1;
+                console.log("Mystery Level: "+mysteryLevel);
+                document.getElementById("mystery-level").innerHTML = mysteryLevel;
+
+                var userScore = "" + (Math.floor(Math.random() * (50 - 1 + 1)) + 1);
+                console.log(`User Score: ${userScore} (Type: ${typeof(userScore)})`);
+                document.getElementById("user-score").innerHTML = `${userScore} (Type: ${typeof(userScore)})`;
+                console.log("Converting User Score to Number.");
+                userScore = userScore - 0;
+                console.log(`User Score: ${userScore} (Type: ${typeof(userScore)})`);
+                document.getElementById("user-score").innerHTML = `${userScore} (Type: ${typeof(userScore)})`;
+
+                var difference = Math.abs(mysteryLevel - userScore);
+                console.log(`Absolute Difference: ${difference}`);
+                document.getElementById("difference").innerHTML = difference;
+
+                var sqrtUserScore = Math.sqrt(userScore);
+                console.log(`Square Root of User score: ${sqrtUserScore}`);
+                document.getElementById("sqrt-user-score").innerHTML = sqrtUserScore;
+
+                console.log(`Value of Pi: ${Math.PI}`);
+                document.getElementById("pi").innerHTML = Math.PI;
+                
+                var result = ("20" - 0)*5;
+                console.log("Result of operation: "+result);
+                document.getElementById("result").innerHTML = result;
+
+                var max = Math.max(10, 20, mysteryLevel);
+                console.log("Maximum Value: "+max);
+                document.getElementById("max").innerHTML = max;
+
+                var min = Math.min(10, 20, mysteryLevel);
+                console.log("Minimum Value: "+min);
+                document.getElementById("min").innerHTML = min;
+            }
+        </script>
+    </body>
+</html>
