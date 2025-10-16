@@ -1,0 +1,152 @@
+<!-- You are helping design a simple product listing feature for an online grocery store. You have an array of product names and an array of their prices. Your tasks are:
+
+Merge the product names and prices into one array in the format: "Product: Apple - Price: 50"
+
+Display all product entries using a loop.
+
+Filter and show only the products with prices greater than 50.
+
+Add a new product "Watermelon" with price 80 to the list, and then display the updated product list.
+ -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>day 6 cw</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+        <style>
+            body {
+                font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                letter-spacing: 0.4px;
+            }
+            header, footer {
+                padding: 20px 50px;
+            }
+            main {
+                padding: 50px;
+            }
+            main p {
+                font-size: smaller;
+            }
+            header h6 {
+                text-shadow: 1px 1px 3px grey;
+            }
+            .btn, .rounded {
+                border-radius: 12px !important;
+            }
+            .card {
+                border-radius: 15px !important;
+            }
+            .card img {
+                max-width: 300px;
+                height: 250px;
+                object-fit: cover;
+            }
+            .card-body {
+                font-size: smaller;
+            }
+            footer {
+                font-size: small;
+            }
+        </style>
+    </head>
+    <body class="p-3">
+        <header class="bg-success rounded text-white text-md-left text-center">
+            <h6>online grocery</h6>
+        </header>
+        <main>
+            <div id="menu" class="row">
+                <div class="card col-lg-3 col-md-5 p-3 mr-3 mb-3">
+                    <img class="card-img-top d-block mx-auto" src="https://m.media-amazon.com/images/I/81Dl5GdAVkL.png" alt="apple">
+                    <div class="card-body">
+                        <h5 class="card-title" id="product-name-1">Apple</h5>
+                        <p>Price: $<span id="product-price-1">50</span></p>
+                    </div>
+                </div>
+                <div class="card col-lg-3 col-md-5 p-3 mr-3 mb-3">
+                    <img class="card-img-top d-block mx-auto" src="https://southsidehabits.com/cdn/shop/articles/Egg-Puffs.png?v=1739778982" alt="egg puffs">
+                    <div class="card-body">
+                        <h5 class="card-title" id="product-name-2">Egg Puffs</h5>
+                        <p>Price: $<span id="product-price-2">20</span></p>
+                    </div>
+                </div>
+                <div class="card col-lg-3 col-md-5 p-3 mr-3 mb-3">
+                    <img class="card-img-top d-block mx-auto" src="https://www.bbassets.com/media/uploads/p/xl/40023487_11-britannia-50-50-sweet-salty-biscuits.jpg" alt="biscuits">
+                    <div class="card-body">
+                        <h5 class="card-title" id="product-name-3">Biscuit</h5>
+                        <p>Price: $<span id="product-price-3">80</span></p>
+                    </div>
+                </div>
+                <div class="card col-lg-3 col-md-5 p-3 mr-3 mb-3">
+                    <img class="card-img-top d-block mx-auto" src="https://m.media-amazon.com/images/I/619HRPW3elL._UF1000,1000_QL80_.jpg" alt="soap powder">
+                    <div class="card-body">
+                        <h5 class="card-title" id="product-name-4">Soap Powder</h5>
+                        <p>Price: $<span id="product-price-4">200</span></p>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <script>
+            var productList = [];
+            var priceList = [];
+
+            for (let i=0; i<4; i++) {
+                productList.push(document.getElementById("product-name-"+(i+1)).innerHTML);
+                console.log(productList);
+                priceList.push(document.getElementById("product-price-"+(i+1)).innerHTML);
+                console.log(priceList);
+            }
+
+            var productArr = productList.map(productPriceMap);
+            
+            function productPriceMap(value) {
+                return `Product: ${value} - Price: ${priceList[productList.indexOf(value)]}`
+            }
+
+            productArr.forEach(printProducts);
+
+            function printProducts(value) {
+                console.log(value);
+            }
+
+            filteredPriceList = priceList.filter(priceFilter);
+            console.log(filteredPriceList);
+            printProductsByPrice(filteredPriceList);
+
+            function priceFilter(value) {
+                return value > 50;
+            }
+
+            function printProductsByPrice(filteredPriceList) {
+                var filteredProductList = [];
+                for (let i=0; i<filteredPriceList.length; i++) {
+                    filteredProductList.push(productList[priceList.indexOf(filteredPriceList[i])]);
+                }
+                console.log(filteredProductList);
+            }
+
+            productList.push("Water Melon");
+            priceList.push('80');
+            console.log(productList);
+            console.log(priceList);
+            document.getElementById("menu").innerHTML += `
+            <div class="card col-lg-3 col-md-5 p-3 mr-3 mb-3">
+                <img class="card-img-top d-block mx-auto" src="https://weresmartworld.com/sites/default/files/styles/full_screen/public/2021-04/watermeloen_2.jpg?itok=CCYHLr5M" alt="water melon">
+                <div class="card-body">
+                    <h5 class="card-title" id="product-name-${productList.length}">${productList[productList.length-1]}</h5>
+                    <p>Price: $<span id="product-price-${priceList.length}">${priceList[priceList.length-1]}</span></p>
+                </div>
+            </div>`;
+            var productArr = productList.map(productPriceMap);
+            console.log(productArr);
+        </script>
+    </body>
+</html>
