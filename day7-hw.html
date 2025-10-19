@@ -1,0 +1,89 @@
+<!-- Create a simple web-based event reminder tool. The page should take a user's input of a past date (for example, their last birthday) and display:
+The year, month (name, not number), and day of that date.
+How many full years have passed since that date.
+A custom message that says:
+“It has been more than a year since that date.”
+or “It has been less than a year since that date.” -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>day 7 hw</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+        <style>
+            body {
+                font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                letter-spacing: 0.4px;
+            }
+            header, footer {
+                padding: 20px 50px;
+            }
+            main {
+                padding: 50px;
+            }
+            main p {
+                font-size: smaller;
+            }
+            header h6 {
+                text-shadow: 1px 1px 3px grey;
+            }
+            .btn, .rounded {
+                border-radius: 12px !important;
+            }
+            .card {
+                border-radius: 15px !important;
+            }
+            .card img {
+                max-width: 300px;
+                height: 250px;
+                object-fit: cover;
+            }
+            .card-body {
+                font-size: smaller;
+            }
+            footer {
+                font-size: small;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+        </header>
+        <main class="container">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h6>event reminder</h6>
+                    <hr>
+                    <span id="output">
+
+                    </span>
+                </div>
+            </div>
+        </main>
+        <footer></footer>
+        <script>
+            var dateInput = prompt("Enter a past date: yyyy-mm-dd");
+            displayDate(new Date(dateInput));
+
+            function displayDate(dateInput) {
+                var year = dateInput.getFullYear();
+                var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+                var month = months[dateInput.getMonth()];
+                var day = dateInput.getDate();
+                var currentDate = new Date();
+                var yearsPassed = (currentDate - dateInput) / (1000 * 60 * 60 * 24 * 365);
+                var msg = yearsPassed > 1 ? "It has been more than a year since that date.":"It has been less than a year since that date.";
+
+                console.log(`Year: ${year}\nMonth: ${month}\nDay: ${day}\nYears Passed: ${yearsPassed}\nMessage: ${msg}\n`);
+                document.getElementById("output").innerHTML = `Year: ${year}<br>Month: ${month}<br>Day: ${day}<br>Years Passed: ${yearsPassed}<br>Message: ${msg}`;
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>day 8 cw</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+        <style>
+            body {
+                font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                letter-spacing: 0.4px;
+            }
+            header, footer {
+                padding: 20px 50px;
+            }
+            main {
+                padding: 50px;
+            }
+            main p {
+                font-size: smaller;
+            }
+            header h6 {
+                text-shadow: 1px 1px 3px grey;
+            }
+            .btn, .rounded {
+                border-radius: 12px !important;
+            }
+            .card {
+                border-radius: 15px !important;
+            }
+            .card img {
+                max-width: 100%;
+                height: 80px;
+                object-fit: cover;
+            }
+            .card-body {
+                font-size: smaller;
+            }
+            footer {
+                font-size: small;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+        </header>
+        <main id="main" class="container">
+            <h6 class="text-center text-md-left">Sale</h6>
+            <br>
+            <div class="row">
+                <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
+                    <div class="card">
+                        <div id="purchase1" class="card-body">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
+                    <div class="card">
+                        <div id="purchase2" class="card-body">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
+                    <div class="card">
+                        <div id="purchase3" class="card-body">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
+                    <div class="card">
+                        <div id="purchase4" class="card-body">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
+                    <div class="card">
+                        <div id="purchase5" class="card-body">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer></footer>
+        <script>
+            var purchased = 0;
+            var total = 0;
+            var itemTotal = 0;
+            var productCodes = {
+                1:{name:"Apple", price: 30, src:"https://4.imimg.com/data4/BH/GH/MY-23225626/fresh-apple-500x500.jpg"},
+                2:{name:"Banana", price: 10, src:"https://img.freepik.com/free-photo/bananas-white-background_1187-1671.jpg?semt=ais_hybrid&w=740&q=80"},
+                3:{name:"Mango", price: 50, src:"https://5.imimg.com/data5/SELLER/Default/2023/9/344928632/OW/RQ/XC/25352890/yellow-mango.jpeg"}
+            };
+            while(purchased < 5) {
+                var productCode = parseInt(prompt(`Purchased: ${purchased}\nEnter product code (1-3):`));
+                if (!(productCode in productCodes)) {
+                    console.log(`Product Code ${productCode} absent.`)
+                    continue;
+                }
+                var quantityPurchased = parseInt(prompt("Enter quantity to be purchased:"));
+                purchased += 1;
+
+                switch (productCode) {
+                    case 1:
+                        itemTotal = productCodes[1].price * quantityPurchased;
+                        break;
+                    case 2:
+                        itemTotal = productCodes[2].price * quantityPurchased;
+                        break;
+                    case 3:
+                        itemTotal = productCodes[3].price * quantityPurchased;
+                        break;
+                }
+
+                var productCard = document.getElementById(`purchase${purchased}`);
+                productCard.innerHTML = `
+                    <img class="d-block mx-auto" src="${productCodes[productCode].src}" alt="${productCodes[productCode].name}">
+                    <h5 class="mt-2">${productCodes[productCode].name}</h5>
+                    <small>Price: ${productCodes[productCode].price}</small>
+                    <br>
+                    <small>Total: ${itemTotal}</small>
+                `;
+
+                console.log("Product Total: $"+itemTotal);
+                total += itemTotal;
+            }
+
+            var mainContainer = document.getElementById("main");
+            mainContainer.innerHTML += `
+                <br>
+                <hr>
+                <h4>Total: ${total}</h4>
+                <small>${total > 100 ? "High Purchase.":"Normal Purchase."}</small>
+            `;
+
+            console.log("Total Purchase: $"+total);
+            if (total > 100) {
+                console.log("High purchase.");
+            }
+            else {
+                console.log("Normal purchase.");
+            }
+        </script>
+    </body>
+</html>
