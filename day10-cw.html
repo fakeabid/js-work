@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>day 10 cw</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+        </style>
+        <script>
+            const userJson = '{"name": "Abid", "email": "abid@gmail.com", "message": "Mandhi kazhikan poyalo?"}';
+        </script>
+    </head>
+    <body>
+        <script>
+            const response = (json) => {
+                try {
+                    const userObj = JSON.parse(json);
+                    console.log(userObj);
+                    console.log(`Message received from ${userObj.name}`);
+                } catch (error) {
+                    console.log(error.message);
+                }
+            };
+
+            response(userJson);
+        </script>        
+    </body>
+</html>
+ <!-- You have some information from a user in JSON format, including their name, email, and message. Your job is to:
+Convert this JSON text into a JavaScript object.
+Write a named arrow function that tries to print "Message received from <name>".
+If something goes wrong (like the JSON is broken), show an error message.
+Run the function to show the result in the console. -->
